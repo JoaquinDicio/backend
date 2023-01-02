@@ -4,7 +4,7 @@ const router = Router ()
 
 router.get('/', getUsers )
 router.post('/', postUsers )
-router.put('/', putUsers)
-router.delete('/', deleteUsers)
+router.put('/:id', putUsers) //recibe el parametro id
+router.delete('/:id', deleteUsers) //recibe el parametro id
 
 module.exports = router

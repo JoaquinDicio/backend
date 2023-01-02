@@ -10,8 +10,8 @@ function postUsers( req,res ){
 
 }
 function deleteUsers( req,res ){
-
-    res.send('Delete usuarios')
+    const {id} = req.params
+    res.send('Eliminado usuario'+id)
 
 }
 function putUsers( req,res ){

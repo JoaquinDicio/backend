@@ -1,12 +1,16 @@
+const Usuario = require('../models/usuarios')
+
 function getUsers( req,res ){
 
     res.send('Get usuarios')
 
 }
-function postUsers( req,res ){
+async function postUsers( req,res ){
 
-    const {nombre,edad} = req.body;
-    res.send(nombre+' '+edad+' Years')
+    const body= req.body;
+    const usuario = new Usuario(body); //creating a new instance
+    await usuario.save()
+    res.send(usuario)
 
 }
 function deleteUsers( req,res ){

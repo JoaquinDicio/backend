@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require ('express')
 const cors = require('cors')
+const {dbConnection} = require('../database/db.config')
 
 class Server {
 
@@ -9,12 +10,17 @@ class Server {
         this.port = process.env._PORT;
         this.middlewares();
         this.routes();
+        this.connectDb()
     }
 
     middlewares(){
         this.app.use(express.static('public'))
         this.app.use(cors())
         this.app.use( express.json() ) //para definir que nuestro servidor se comunica en JSON
+    }
+
+    async connectDb(){
+        await dbConnection()
     }
 
     routes(){
